@@ -361,6 +361,24 @@ footer .made-by{color:#555;}
 footer .made-by span{color:#666;font-weight:600;}
 footer .copy{color:#333;}
 
+/* ── YASAL UYARI ── */
+.legal-note{
+  width:100%;max-width:860px;
+  margin:3rem auto 0;
+  padding:1.1rem .5rem 1.6rem;
+  border-top:1px solid rgba(255,255,255,0.06);
+  text-align:center;
+  font-size:11px;line-height:1.75;
+  color:rgba(255,255,255,0.32);
+}
+.legal-note strong{color:rgba(255,255,255,0.42);font-weight:600;}
+.legal-note a{
+  color:rgba(255,255,255,0.45);
+  text-decoration:underline;text-underline-offset:2px;
+  transition:color .2s;
+}
+.legal-note a:hover{color:rgba(0,255,255,0.75);}
+
 /* ── REHBERLER SAYFASI ── */
 .rehberler-wrap{padding:2rem;max-width:960px;margin:0 auto;}
 .rehberler-wrap h1{
@@ -565,6 +583,7 @@ footer .copy{color:#333;}
         </div>
       </div>
     </div>
+    <div class="legal-note-slot"></div>
   </div>
 </div>
 
@@ -986,6 +1005,7 @@ footer .copy{color:#333;}
       <button class="haber-pg-btn" id="haberBtn3" onclick="haberSayfaGoster(3)">3</button>
     </div>
 
+    <div class="legal-note-slot"></div>
   </div>
 </div>
 
@@ -1007,6 +1027,22 @@ footer .copy{color:#333;}
 </footer>
 
 <script>
+/* ══════════════════════════════
+   YASAL UYARI (tüm sayfalarda ortak)
+══════════════════════════════ */
+const LEGAL_NOTE_HTML=`
+  <div class="legal-note">
+    <strong>Yasal Uyarı &amp; Telif Hakkı:</strong>
+    Bu proje yalnızca bilgilendirme ve donanım karşılaştırma amacıyla hazırlanmış açık kaynaklı bir rehberdir; ticari bir amacı yoktur.
+    Sitede yer alan videolar kendi sunucularımızda barındırılmamakta, YouTube'un resmi yerleştirme (Embed/API) altyapısı aracılığıyla doğrudan ilgili içerik üreticilerinin kanallarından oynatılmaktadır.
+    Haber bölümlerinde ise yalnızca kısa özetlere yer verilmekte ve kullanıcılar orijinal kaynak sitelere yönlendirilmektedir.
+    Tüm video, haber, marka ve ürün logolarının telif hakları ilgili yayıncı ve üreticilere aittir.
+    İçerik kaldırma talepleriniz veya görüşleriniz için
+    <a href="https://github.com/ye4il/Hardware-Comparison-English-and-Turkish/issues" target="_blank" rel="noopener">GitHub deposu</a>
+    üzerinden iletişime geçebilirsiniz.
+  </div>`;
+document.querySelectorAll(".legal-note-slot").forEach(s=>{s.innerHTML=LEGAL_NOTE_HTML;});
+
 /* ══════════════════════════════
    VERİ
 ══════════════════════════════ */
@@ -2039,7 +2075,8 @@ function renderHome(){
           <p style="margin-top:.4rem;font-size:.75rem;color:#888;">${sayi} ürün</p>
         </div>`;
       }).join("")}
-    </div>`;
+    </div>
+    ${LEGAL_NOTE_HTML}`;
 }
 
 /* ══════════════════════════════
